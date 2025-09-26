@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import Card from '../components/Card';
 import Table, { TableColumn } from '../components/Table';
 import StatusPill from '../components/StatusPill';
-import { getPastMeetings, getUpcomingMeetings, getFollowUps, type Meeting, type UpcomingMeeting, type FollowUp } from '../lib/dataService';
+import { useToast } from '../components/Toast';
+import { getPastMeetings, getUpcomingMeetings, getFollowUps, addActivityLog, type Meeting, type UpcomingMeeting, type FollowUp } from '../lib/dataService';
 import { format, parseISO } from 'date-fns';
 
 interface DashboardProps {
@@ -14,6 +15,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onPageChange }) => {
   const [pastMeetings, setPastMeetings] = useState<Meeting[]>([]);
   const [upcomingMeetings, setUpcomingMeetings] = useState<UpcomingMeeting[]>([]);
   const [followUps, setFollowUps] = useState<FollowUp[]>([]);
+  const { showSuccess } = useToast();
 
   useEffect(() => {
     setPastMeetings(getPastMeetings().slice(0, 5)); // Last 5 meetings
@@ -65,6 +67,14 @@ const Dashboard: React.FC<DashboardProps> = ({ onPageChange }) => {
       className: 'w-20'
     }
   ];
+
+  const handleSendReminder = () => {
+    // Log the activity
+    addActivityLog('Send Reminder', 'Reminder sent to meeting participants');
+    
+    // Show success toast
+    showSuccess('Reminder sent successfully!');
+  };
 
   return (
     <div className="space-y-6">
@@ -184,7 +194,10 @@ const Dashboard: React.FC<DashboardProps> = ({ onPageChange }) => {
             Prepare Agenda
           </button>
 
-          <button className="meeting-button-ghost text-center p-4 flex flex-col items-center gap-2">
+          <button 
+            onClick={handleSendReminder}
+            className="meeting-button-ghost text-center p-4 flex flex-col items-center gap-2"
+          >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5 5v-5zM4 4h7v7H4V4zm9 0h7v7h-7V4zM4 13h7v7H4v-7z" />
             </svg>

@@ -1,0 +1,13 @@
+date,product,customer_type,licenses,region
+2025-08-28,CRM,SMB,22,DE
+2025-08-30,Mail,Education,350,DE
+2025-09-04,Books,SMB,15,DE
+2025-09-08,CRM,Enterprise,120,DE
+2025-09-12,Desk,SMB,18,DE
+2025-09-14,CRM,Education,60,DE
+2025-09-18,Analytics,SMB,25,DE
+2025-09-21,CRM,SMB,28,DE
+2025-09-22,Mail,SMB,40,DE
+2025-09-24,Desk,Enterprise,90,DE
+2025-09-25,CRM,SMB,30,DE
+2025-09-26,Analytics,Education,200,DE

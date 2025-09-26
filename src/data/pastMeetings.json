@@ -1,0 +1,37 @@
+[
+  {
+    "id": "m1",
+    "date": "2025-09-02T09:30:00Z",
+    "topic": "Q3 promo alignment",
+    "outcome": "Agreed 10% promo for SMB",
+    "notes": "Need updated price list"
+  },
+  {
+    "id": "m2", 
+    "date": "2025-09-10T10:00:00Z",
+    "topic": "Pipeline review",
+    "outcome": "Focus on Edu vertical", 
+    "notes": "Provide 3 case studies"
+  },
+  {
+    "id": "m3",
+    "date": "2025-09-17T09:00:00Z", 
+    "topic": "Renewals push",
+    "outcome": "Target 25 renewals",
+    "notes": "Set weekly tracker"
+  },
+  {
+    "id": "m4",
+    "date": "2025-09-20T08:30:00Z",
+    "topic": "Feature feedback", 
+    "outcome": "Top 3 bugs listed",
+    "notes": "Escalated to product"
+  },
+  {
+    "id": "m5",
+    "date": "2025-09-23T09:15:00Z",
+    "topic": "End-of-month targets",
+    "outcome": "Stretch +8%", 
+    "notes": "Need Germany lead list"
+  }
+]

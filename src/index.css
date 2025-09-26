@@ -2,41 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* AI Meeting Buddy - Professional Dark Theme Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Dark theme core colors */
+    --background: 215 28% 8%;  /* #0b0f14 - near black */
+    --foreground: 213 18% 92%; /* #e6edf3 - high contrast text */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 215 25% 11%;       /* #121821 - dark surface */
+    --card-foreground: 213 18% 92%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 215 25% 11%;
+    --popover-foreground: 213 18% 92%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 215 100% 66%;   /* #4f8cff - professional blue */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 215 20% 15%;  /* subtle surface */
+    --secondary-foreground: 210 14% 70%; /* #9fb0c3 - muted text */
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 215 20% 15%;
+    --muted-foreground: 210 14% 70%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 215 100% 66%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --success: 145 63% 49%;    /* #2ecc71 - success green */
+    --success-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --destructive: 0 84% 67%;  /* #ff5c5c - danger red */
+    --destructive-foreground: 0 0% 100%;
 
-    --radius: 0.5rem;
+    --warning: 38 92% 50%;     /* warning orange */
+    --warning-foreground: 0 0% 100%;
+
+    --border: 215 25% 18%;     /* #1f2933 - subtle borders */
+    --input: 215 25% 18%;
+    --ring: 215 100% 66%;
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -92,6 +97,59 @@ All colors MUST be HSL.
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
+  /* Meeting Buddy specific utilities */
+  .meeting-card {
+    @apply bg-card border border-border rounded-xl p-6 shadow-sm;
+  }
+
+  .meeting-button {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200;
+  }
+
+  .meeting-button-primary {
+    @apply meeting-button bg-primary text-primary-foreground hover:opacity-90;
+  }
+
+  .meeting-button-ghost {
+    @apply meeting-button border border-border hover:bg-secondary;
+  }
+
+  .meeting-button-danger {
+    @apply meeting-button bg-destructive text-destructive-foreground hover:opacity-90;
+  }
+
+  .meeting-table {
+    @apply w-full border-collapse;
+  }
+
+  .meeting-table th {
+    @apply text-left p-3 border-b border-border font-semibold text-muted-foreground text-sm;
+  }
+
+  .meeting-table td {
+    @apply p-3 border-b border-border;
+  }
+
+  .meeting-input {
+    @apply w-full px-3 py-2 bg-input border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent;
+  }
+
+  .status-pill {
+    @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium;
+  }
+
+  .status-pill-success {
+    @apply status-pill bg-success/10 text-success border border-success/20;
+  }
+
+  .status-pill-warning {
+    @apply status-pill bg-warning/10 text-warning border border-warning/20;
+  }
+
+  .status-pill-danger {
+    @apply status-pill bg-destructive/10 text-destructive border border-destructive/20;
+  }
 }
 
 @layer base {
@@ -100,6 +158,21 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  /* Professional focus styles */
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+  }
+
+  /* Smooth animations with motion preferences */
+  @media (prefers-reduced-motion: no-preference) {
+    * {
+      scroll-behavior: smooth;
+    }
   }
 }
